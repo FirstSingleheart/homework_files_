@@ -1,10 +1,11 @@
 from pprint import pprint
 
+cook_book = {}
+
 
 # readlines().count()
 
 def add_cook(file_name):
-    cook_book = {}
     with open(file_name) as f:
         for line in f:
             cook_name = line.strip()
@@ -18,4 +19,23 @@ def add_cook(file_name):
     return cook_book
 
 
-pprint(add_cook("recipes.txt"))
+add_cook("recipes.txt")
+# pprint(cook_book)
+
+shopping_dict = {}
+
+def get_shop_list_by_dishes(dishes, person_count):
+    temp_dict = {}
+    for dish in dishes:
+        if dish in cook_book:
+            for ingredient in cook_book[dish]:
+                if ingredient['ingredient_name'] not in shopping_dict:
+                    temp_dict = {'quantity': int(ingredient['quantity']) * person_count, 'measure': ingredient['measure'].strip("\n")}
+                    shopping_dict[ingredient['ingredient_name']] = temp_dict
+                else:
+                    shopping_dict[ingredient]['quantity'] += int(ingredient['quantity']) * person_count
+    return shopping_dict
+
+
+get_shop_list_by_dishes(['Запеченный картофель', 'Фахитос'], 5)
+pprint(shopping_dict)
