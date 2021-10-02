@@ -11,7 +11,7 @@ def read_files_str(file_name):
     with open(file_name, encoding="utf-8") as f:
         data = ""
         for el in f.readlines():
-            data += el.strip("\n")
+            data += el
         return data
 
 
