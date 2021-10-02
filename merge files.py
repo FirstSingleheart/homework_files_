@@ -22,7 +22,10 @@ file_1_text = read_files_str("1.txt")
 file_2_text = read_files_str("2.txt")
 file_3_text = read_files_str("3.txt")
 
-merge_list = [["1.txt", len(file_1), file_1_text], ["2.txt", len(file_2), file_2_text], ["3.txt", len(file_3), file_3_text]]
+merge_list = [["1.txt", len(file_1), file_1_text],
+              ["2.txt", len(file_2), file_2_text],
+              ["3.txt", len(file_3), file_3_text]]
+
 sorted_list = sorted(merge_list, key=lambda k: k[1])
 final_list = []
 for i in sorted_list:
